@@ -1,0 +1,29 @@
+{
+  "name": "meli",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server/src/index.js",
+  "scripts": {
+    "format": "prettier --write .",
+    "test": "npm test",
+    "prepare": "husky install",
+    "dev": "cd server && npm run dev"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.js": {
+      "**/*": "prettier --write --ignore-unknown"
+    }
+  },
+  "author": "Harvy Mosquera",
+  "license": "ISC",
+  "devDependencies": {
+    "husky": "^8.0.1",
+    "lint-staged": "^13.0.3",
+    "prettier": "2.7.1"
+  }
+}
