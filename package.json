@@ -2,15 +2,14 @@
   "name": "meli",
   "version": "1.0.0",
   "description": "",
-  "main": "server/src/index.js",
+  "main": "src/server/index.js",
   "scripts": {
-    "start": "nodemon ./server/src/index.js & npm run build ",
+    "start": "nodemon ./src/server/src/index.js & npm run build ",
     "build": "webpack --config webpack.config.js",
     "format": "prettier --write .",
     "test": "npm test",
     "prepare": "husky install",
-    "dev": "nodemon server/src/index.js",
-    "babel": "babel client/src -d client/views"
+    "dev": "nodemon src/server/index.js"
   },
   "husky": {
     "hooks": {

@@ -4,10 +4,10 @@ module.exports = {
   mode: 'development',
   watch: true,
   entry: {
-    bundle: './client/src/bundle.js',
+    bundle: './src/client/src/bundle.js',
   },
   output: {
-    path: path.resolve(__dirname, './client/public'),
+    path: path.resolve(__dirname, './build/public'),
     filename: '[name].js',
   },
   module: {
