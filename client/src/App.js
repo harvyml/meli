@@ -1,17 +1,16 @@
-import React from "react";
-import { useEffect } from "react";
+import React from 'react';
+import { useEffect } from 'react';
 
 function App() {
-  if (typeof window === "undefined") { 
-    //client side code 
-    console.log("INDEINGED")
-  }else{
-    console.log("SERVER")
+  if (typeof window === 'undefined') {
+    //client side code
+    console.log('INDEINGED');
+  } else {
+    console.log('SERVER');
   }
   return (
     <div className="App">
       <header className="App-header">
-
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>

@@ -1,5 +1,5 @@
-export default function template(title, content = "") {
-  let scripts = ` <script src="public/bundle.js"> </script> `
+export default function template(title, content = '') {
+  let scripts = ` <script src="public/bundle.js"> </script> `;
   let page = `<!DOCTYPE html>
               <html lang="en">
               <head>

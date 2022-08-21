@@ -5,6 +5,6 @@ import App from '../../client/src/App';
 module.exports = function render(initialState) {
   let content = renderToString(<App />);
   return {
-    content
+    content,
   };
 };
