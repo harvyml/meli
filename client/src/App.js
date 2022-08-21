@@ -1,11 +1,17 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { useEffect } from "react";
 
 function App() {
+  if (typeof window === "undefined") { 
+    //client side code 
+    console.log("INDEINGED")
+  }else{
+    console.log("SERVER")
+  }
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
