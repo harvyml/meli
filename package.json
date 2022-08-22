@@ -4,12 +4,12 @@
   "description": "",
   "main": "src/server/index.js",
   "scripts": {
-    "start": "nodemon ./src/server/src/index.js & npm run build ",
-    "build": "webpack --config webpack.config.js",
+    "start:dev": "nodemon ./src/server/src/index.js & npm run build:dev ",
+    "start:prod": "npm run build:prod && node ./src/server/src/index.js",
+    "build:dev": "webpack --config webpack.dev.js",
+    "build:prod": "webpack --config webpack.prod.js",
     "format": "prettier --write .",
-    "test": "npm test",
-    "prepare": "husky install",
-    "dev": "nodemon src/server/index.js"
+    "prepare": "husky install"
   },
   "husky": {
     "hooks": {
