@@ -1,8 +1,8 @@
-import express from 'express';
 import { Router } from 'express';
 import { AUTHOR } from '../../constants';
 import { organizeCategories, request } from '../services';
 import { formatSearch } from '../services/items';
+import jwt from 'jsonwebtoken';
 
 const api = Router();
 
@@ -21,7 +21,8 @@ api.get('/items', async (req, res) => {
     });
   } catch (err) {
     res.json({
-      data: null,
+      author: AUTHOR,
+      items: null,
       ok: false,
       err: err,
     });
@@ -30,15 +31,20 @@ api.get('/items', async (req, res) => {
 
 api.get('/items/:id', async (req, res) => {
   try {
-    const search = await request(req.params.search);
+    const product = await request(`/items/${req.params.id}`);
+    const description = await request(`/items/${req.params.id}/description`);
+    const formattedProduct = formatSearch([product])[0];
     res.json({
-      data: search,
+      author: AUTHOR,
+      item: formattedProduct,
+      description: description,
       ok: true,
       err: null,
     });
   } catch (err) {
     res.json({
-      data: null,
+      author: AUTHOR,
+      item: null,
       ok: false,
       err: err,
     });
