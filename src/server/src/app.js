@@ -4,6 +4,7 @@ import express from 'express';
 import path from 'path';
 import template from './template';
 import ssr from './server';
+import api from './api';
 
 const app = express();
 
@@ -13,6 +14,7 @@ app.use(
   '/assets',
   express.static(path.resolve(__dirname, '../../../public/assets'))
 );
+app.use('/api', api);
 
 let initialState = {
   isFetching: false,
