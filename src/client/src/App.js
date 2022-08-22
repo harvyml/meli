@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useEffect } from 'react';
+import Header from './components/Header';
 
 function App() {
   const [state, setState] = useState(0);
@@ -10,12 +11,7 @@ function App() {
 
   return (
     <div className="App">
-      <header className="App-header">
-        <p>count {state}</p>
-        <a className="App-link" onClick={handleClick}>
-          Increment
-        </a>
-      </header>
+      <Header />
     </div>
   );
 }

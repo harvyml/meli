@@ -8,9 +8,10 @@ import ssr from './server';
 const app = express();
 
 // Serving static files
+app.use('/public', express.static(path.resolve(__dirname, '../../../public')));
 app.use(
-  '/public',
-  express.static(path.resolve(__dirname, '../../client/public'))
+  '/assets',
+  express.static(path.resolve(__dirname, '../../../public/assets'))
 );
 
 let initialState = {
