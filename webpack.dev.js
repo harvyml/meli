@@ -1,8 +1,9 @@
 const path = require('path');
-
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 module.exports = {
   mode: 'development',
   watch: true,
+  plugins: [new MiniCssExtractPlugin()],
   entry: {
     bundle: './src/client/src/bundle.js',
   },
@@ -12,20 +13,39 @@ module.exports = {
   },
   module: {
     rules: [
-      { test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader' },
       {
-        test: /\.(png|svg|jpg|jpeg|gif)$/i,
-        type: 'asset/resource',
+        test: /\.(js|jsx)$/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env', '@babel/preset-react'],
+          },
+        },
+        exclude: [/node_modules/, /public/],
       },
       {
-        test: /\.s[ac]ss$/i,
+        test: /\.(jpg|jpeg|png|svg|gif)$/,
         use: [
-          // Creates `style` nodes from JS strings
-          'style-loader',
-          // Translates CSS into CommonJS
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[md5:hash:hex].[ext]',
+              publicPath: './assets/',
+              outputPath: 'img',
+            },
+          },
+        ],
+      },
+      {
+        test: /\.(css)$/,
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+              publicPath: '/public/css',
+            },
+          },
           'css-loader',
-          // Compiles Sass to CSS
-          'sass-loader',
         ],
       },
     ],
