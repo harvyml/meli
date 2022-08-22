@@ -7,9 +7,10 @@ import { formatSearch } from '../services/items';
 const api = Router();
 
 api.get('/items', async (req, res) => {
+  let limit = req.query.limit ? req.query.limit : 4;
   try {
     const search = await request(
-      `/sites/MLA/search?q=${req.query.search}&limit=${req.query.limit}`
+      `/sites/MLA/search?q=${req.query.search}&limit=${limit}`
     );
     res.json({
       author: AUTHOR,
