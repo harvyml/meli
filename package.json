@@ -2,15 +2,14 @@
   "name": "meli",
   "version": "1.0.0",
   "description": "",
-  "main": "server/src/index.js",
+  "main": "src/server/index.js",
   "scripts": {
-    "start": "nodemon ./server/src/index.js & npm run build ",
+    "start": "nodemon ./src/server/src/index.js & npm run build ",
     "build": "webpack --config webpack.config.js",
     "format": "prettier --write .",
     "test": "npm test",
     "prepare": "husky install",
-    "dev": "nodemon server/src/index.js",
-    "babel": "babel client/src -d client/views"
+    "dev": "nodemon src/server/index.js"
   },
   "husky": {
     "hooks": {
@@ -19,7 +18,10 @@
   },
   "lint-staged": {
     "*.js": {
-      "**/*": "prettier --write --ignore-unknown"
+      "**/*": [
+        "prettier --write --ignore-unknown",
+        "git add ."
+      ]
     }
   },
   "author": "Harvy Mosquera",
@@ -28,6 +30,7 @@
     "dotenv": "^16.0.1",
     "express": "^4.18.1",
     "morgan": "^1.10.0",
+    "node-fetch": "2.1.2",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-scripts": "5.0.1",
@@ -46,6 +49,8 @@
     "lint-staged": "^13.0.3",
     "nodemon": "^2.0.19",
     "prettier": "2.7.1",
+    "sass": "^1.54.5",
+    "sass-loader": "^13.0.2",
     "style-loader": "^3.3.1",
     "svg-url-loader": "^7.1.1",
     "use-ssr": "^1.0.24",

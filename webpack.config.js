@@ -4,28 +4,28 @@ module.exports = {
   mode: 'development',
   watch: true,
   entry: {
-    bundle: './client/src/bundle.js',
+    bundle: './src/client/src/bundle.js',
   },
   output: {
-    path: path.resolve(__dirname, './client/public'),
+    path: path.resolve(__dirname, './public/build'),
     filename: '[name].js',
   },
   module: {
     rules: [
       { test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader' },
       {
-        test: /\.css$/i,
-        use: ['style-loader', 'css-loader'],
+        test: /\.(png|svg|jpg|jpeg|gif)$/i,
+        type: 'asset/resource',
       },
       {
-        test: /\.svg$/,
+        test: /\.s[ac]ss$/i,
         use: [
-          {
-            loader: 'svg-url-loader',
-            options: {
-              limit: 10000,
-            },
-          },
+          // Creates `style` nodes from JS strings
+          'style-loader',
+          // Translates CSS into CommonJS
+          'css-loader',
+          // Compiles Sass to CSS
+          'sass-loader',
         ],
       },
     ],
