@@ -4,10 +4,8 @@
   "description": "",
   "main": "src/server/index.js",
   "scripts": {
-    "start:dev": "nodemon ./src/server/src/index.js & npm run build:dev ",
-    "start:prod": "npm run build:prod && node ./src/server/src/index.js",
-    "build:dev": "webpack --config webpack.dev.js",
-    "build:prod": "webpack --config webpack.prod.js",
+    "serve-dev": "webpack --config webpack.dev.js & webpack --config webpack.server.dev.js & nodemon ./build/server/index.js",
+    "build": "webpack --config webpack.prod.js && webpack --config webpack.server.prod.js",
     "format": "prettier --write .",
     "prepare": "husky install"
   },
@@ -27,8 +25,12 @@
   "author": "Harvy Mosquera",
   "license": "ISC",
   "dependencies": {
+    "babel-plugin-css-modules-transform": "^1.6.2",
     "dotenv": "^16.0.1",
     "express": "^4.18.1",
+    "ignore-styles": "^5.0.1",
+    "jsonwebtoken": "^8.5.1",
+    "mini-css-extract-plugin": "^2.6.1",
     "morgan": "^1.10.0",
     "node-fetch": "2.1.2",
     "react": "17.0.2",
@@ -55,6 +57,7 @@
     "svg-url-loader": "^7.1.1",
     "use-ssr": "^1.0.24",
     "webpack": "^5.74.0",
-    "webpack-cli": "^4.10.0"
+    "webpack-cli": "^4.10.0",
+    "webpack-node-externals": "^3.0.0"
   }
 }
