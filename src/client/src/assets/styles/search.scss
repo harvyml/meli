@@ -1,17 +1,20 @@
 .search-container {
   padding: 10;
-  width: 80%;
+  width: 100%;
+
   .search {
     padding: 10px 5px;
     width: 100%;
   }
+
   .search-icon-container {
-    background-color: white;
+    background-color: #eeeeee;
   }
   // not inside search-icon-container to leave the option to not use it
   .search-icon {
-    width: 20px;
-    height: 20px;
+    width: 18px;
+    height: 18px;
     justify-self: center;
+    padding: 0 10px;
   }
 }

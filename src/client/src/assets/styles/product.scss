@@ -1,0 +1,38 @@
+.item-image {
+  grid-area: image;
+
+  img {
+    width: 200px;
+    margin: auto;
+    object-fit: fill;
+  }
+}
+
+.content {
+  h2 {
+    padding: 20px 0;
+  }
+  grid-area: content;
+}
+
+.city {
+  grid-area: city;
+  padding-top: 30px;
+  text-align: center;
+}
+
+.product-container {
+  padding: 30px;
+}
+.product {
+  margin: 30px 0;
+  display: grid;
+  grid-gap: 20px;
+  grid-template-columns: 200px 50% auto;
+  grid-template-areas:
+    'image content  city'
+    'image content city'
+    'image content city';
+  background-color: #fff;
+  color: #444;
+}

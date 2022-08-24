@@ -1,13 +1,13 @@
 import React from 'react';
-import '../assets/header.scss';
+import '../assets/styles/header.scss';
 import Search from './search';
 
 function Header() {
   return (
     <header className="header">
       <div className="container">
-        <div className="flex row space-around">
-          <img src="./assets/logo.png" style={{ width: 50, height: 50 }} />
+        <div className="flex row">
+          <img src="./assets/images/logo.png" className="logo" />
           <Search />
         </div>
       </div>
