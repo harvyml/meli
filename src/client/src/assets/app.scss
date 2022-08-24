@@ -1,0 +1,19 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+// GENERAL STYLING
+.flex {
+  display: flex;
+  &.wrap {
+    flex-wrap: wrap;
+  }
+  &.space-around {
+    justify-content: space-around;
+  }
+}
+
+.m-auto {
+  margin: auto;
+}

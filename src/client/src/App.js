@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
-import { useEffect } from 'react';
+import React from 'react';
 import Header from './components/Header';
-import './assets/App.css';
+import './assets/app.scss';
 
 function App() {
   return (

@@ -8,7 +8,7 @@ module.exports = {
     bundle: './src/client/src/bundle.js',
   },
   output: {
-    path: path.resolve(__dirname, './public/build'),
+    path: path.resolve('build/client'),
     filename: '[name].js',
   },
   module: {
@@ -46,6 +46,20 @@ module.exports = {
             },
           },
           'css-loader',
+        ],
+      },
+      {
+        test: /\.scss$/,
+        use: [
+          {
+            loader: 'style-loader',
+          },
+          {
+            loader: 'css-loader',
+          },
+          {
+            loader: 'sass-loader',
+          },
         ],
       },
     ],
