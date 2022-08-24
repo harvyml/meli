@@ -3,11 +3,17 @@ import Header from './components/Header';
 import './assets/styles/app.scss';
 import Products from './views/Products';
 
+import { QueryClient, QueryClientProvider } from 'react-query';
+
+const queryClient = new QueryClient();
+
 function App() {
   return (
     <div className="App">
-      <Header />
-      <Products />
+      <QueryClientProvider client={queryClient}>
+        <Header />
+        <Products />
+      </QueryClientProvider>
     </div>
   );
 }
