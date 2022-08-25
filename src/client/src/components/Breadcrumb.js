@@ -16,11 +16,8 @@ function Breadcrumb({ items = ['cocinas', 'neveras', 'nevera'] }) {
           }
 
           return (
-            <Fragment>
-              <span
-                className="item"
-                key={`breadcrumb-item-${idx}`}
-              >{`${item}`}</span>
+            <Fragment key={`breadcrumb-item-${idx}`}>
+              <span className="item">{`${item}`}</span>
               <span>&gt;</span>
             </Fragment>
           );

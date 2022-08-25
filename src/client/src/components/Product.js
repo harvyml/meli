@@ -7,16 +7,17 @@ function Product({
   title = 'Iphone',
   description = 'Apple ipod touch 156GB 16RAM Negro Igual a nuevo, completo y unico',
   city = 'Capital Federal',
-  url = '../assets/images/iphone.jpeg',
+  img = '../assets/images/iphone.jpeg',
 }) {
   return (
     <div className="product-container">
       <div className="product">
         <div className="item-image product-item">
-          <img src={url} />
+          <img src={img} />
         </div>
         <div className="content product-item">
           <h2>$ {price}</h2>
+          <h1>{title}</h1>
           <p>{description}</p>
         </div>
         <div className="city product-item">

@@ -1,17 +1,45 @@
-export default function template(title, content = '') {
-  let scripts = ` <script src="public/bundle.js"> </script> `;
-  let page = `<!DOCTYPE html>
-              <html lang="en">
-              <head>
-                <meta charset="utf-8">
-                <title> ${title} </title>
-              </head>
-              <body>
-                <div id="app" class="wrap-inner app">${content}</div>
-                ${scripts}
-              </body>
-              </html>
-              `;
+import React from 'react';
+import ReactDOMServer from 'react-dom/server';
+import { QueryClientProvider, QueryClient } from 'react-query';
+import { Provider } from 'react-redux';
+import App from '../../client/src/Pages/App';
+import MainProduct from '../../client/src/pages/MainProduct';
+import Html from './Html';
 
-  return page;
+function homeTemplate(store, initialState, fetchedData) {
+  const appMarkup = ReactDOMServer.renderToString(
+    <Provider store={store}>
+      <App />
+    </Provider>
+  );
+
+  const html = ReactDOMServer.renderToStaticMarkup(
+    <Html
+      children={appMarkup}
+      scripts={['public/app.js']}
+      initialState={initialState}
+    />
+  );
+
+  return html;
 }
+function productTemplate(store, initialState) {
+  const productMarkup = ReactDOMServer.renderToString(
+    <Provider store={store}>
+      <MainProduct />
+    </Provider>
+  );
+
+  const html = ReactDOMServer.renderToStaticMarkup(
+    //using ../public/product.js because this route is one level deeper
+    <Html
+      children={productMarkup}
+      scripts={['../public/product.js']}
+      initialState={initialState}
+    />
+  );
+
+  return html;
+}
+
+export { homeTemplate, productTemplate };
