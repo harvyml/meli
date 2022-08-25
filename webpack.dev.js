@@ -1,9 +1,28 @@
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-module.exports = {
+const nodeExternals = require('webpack-node-externals');
+const NodemonPlugin = require('nodemon-webpack-plugin');
+
+const webpackClient = {
   mode: 'development',
   watch: true,
-  plugins: [new MiniCssExtractPlugin()],
+  plugins: [
+    new MiniCssExtractPlugin(),
+    new NodemonPlugin({
+      script: './build/server/index.js',
+      // Extensions to watch.
+      ext: 'js',
+      // What to watch.
+      watch: path.resolve('./src/client/'),
+      delay: '1000',
+      // Detailed log.
+      verbose: true,
+      // Environment variables to pass to the script to be restarted
+      env: {
+        NODE_ENV: 'development',
+      },
+    }),
+  ],
   entry: {
     app: './src/client/src/bundles/app.bundle.js',
     product: './src/client/src/bundles/product.bundle.js',
@@ -66,3 +85,35 @@ module.exports = {
     ],
   },
 };
+
+const webpackServer = {
+  mode: 'development',
+  entry: './src/server/src/index.js',
+  target: 'node',
+  watch: true,
+  plugins: [new MiniCssExtractPlugin()],
+  externals: [nodeExternals()],
+  output: {
+    path: path.resolve('build/server'),
+    filename: 'index.js',
+  },
+  module: {
+    rules: [
+      {
+        test: /\.(js|jsx)$/,
+        use: 'babel-loader',
+      },
+      {
+        test: /\.s[ac]ss$/i,
+        use: [
+          // Translates CSS into CommonJS
+          'css-loader',
+          // Compiles Sass to CSS
+          'sass-loader',
+        ],
+      },
+    ],
+  },
+};
+
+module.exports = [webpackClient, webpackServer];

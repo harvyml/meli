@@ -10,6 +10,11 @@ function Products({ query = {} }) {
     'products'
   );
 
+  function navigateToProduct(e) {
+    const id = e.currentTarget.getAttribute('id');
+    window.location.replace(`/items/${id}`);
+  }
+
   if (status == 'success') {
     return (
       <div className="container">
@@ -18,6 +23,8 @@ function Products({ query = {} }) {
           {data?.items.map((product, idx) => {
             return (
               <Product
+                onClick={navigateToProduct}
+                id={product.id}
                 key={`product-${idx}`}
                 title={product.title}
                 img={product.picture}
