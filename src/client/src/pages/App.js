@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import Header from '../components/Header';
 import '../assets/styles/app.scss';
 import Products from '../views/Products';
@@ -9,10 +9,14 @@ import { connect } from 'react-redux';
 const queryClient = new QueryClient();
 
 function App({ query }) {
+  const [search, setSearch] = useState();
+  useEffect(() => {
+    console.log('search: ', search);
+  }, [search]);
   return (
     <div className="App">
       <QueryClientProvider client={queryClient}>
-        <Header />
+        <Header search={search} setSearch={setSearch} />
         <Products query={query} />
       </QueryClientProvider>
     </div>

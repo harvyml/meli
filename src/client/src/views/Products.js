@@ -15,9 +15,10 @@ function Products({ query = {} }) {
       <div className="container">
         {data && <Breadcrumb items={data.categories} />}
         <div className="products-container">
-          {data.items.map((product, idx) => {
+          {data?.items.map((product, idx) => {
             return (
               <Product
+                key={`product-${idx}`}
                 title={product.title}
                 img={product.picture}
                 price={product.price.amount}

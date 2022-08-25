@@ -1,10 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import '../assets/styles/search.scss';
 
-function Search() {
+function Search({ search, setSearch }) {
   return (
     <div className="search-container flex row">
-      <input placeholder="Search..." className="search" />
+      <input
+        value={search}
+        onChange={(e) => {
+          setSearch(e.target.value);
+        }}
+        placeholder="Search..."
+        className="search"
+      />
       <div className="search-icon-container flex row column justify-center">
         <img className="search-icon" src="./assets/icons/search-icon.svg" />
       </div>

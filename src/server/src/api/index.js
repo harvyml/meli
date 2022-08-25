@@ -2,7 +2,6 @@ import { Router } from 'express';
 import { AUTHOR } from '../../constants';
 import { organizeCategories, request } from '../services';
 import { formatSearch } from '../services/items';
-import jwt from 'jsonwebtoken';
 
 const api = Router();
 
