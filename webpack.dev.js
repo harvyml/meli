@@ -5,7 +5,8 @@ module.exports = {
   watch: true,
   plugins: [new MiniCssExtractPlugin()],
   entry: {
-    bundle: './src/client/src/bundle.js',
+    app: './src/client/src/bundles/app.bundle.js',
+    product: './src/client/src/bundles/product.bundle.js',
   },
   output: {
     path: path.resolve('build/client'),

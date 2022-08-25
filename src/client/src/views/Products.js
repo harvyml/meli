@@ -4,21 +4,12 @@ import '../assets/styles/products.scss';
 import Breadcrumb from '../components/Breadcrumb';
 import { useFetch } from '../hooks/useFetch';
 
-function Products() {
-  const [params, setParams] = useState(null);
-  let search;
-  if (typeof window !== 'undefined') {
-    search = new URLSearchParams(window.location.search);
-  }
-
-  useEffect(() => {
-    console.log('search: ', search);
-  }, [search]);
-
+function Products({ query = {} }) {
   const { status, isLoading, data, isError } = useFetch(
-    ['/api/items?search=iphone'],
+    [`/api/items?search=${query.search}`],
     'products'
   );
+
   if (status == 'success') {
     return (
       <div className="container">
@@ -28,7 +19,7 @@ function Products() {
             return (
               <Product
                 title={product.title}
-                url={product.picture}
+                img={product.picture}
                 price={product.price.amount}
                 city={'Buenos Aires'}
               />

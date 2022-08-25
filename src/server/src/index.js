@@ -2,9 +2,12 @@ require('dotenv').config();
 // serve react static assets
 import express from 'express';
 import path from 'path';
-import template from './template';
-import ssr from './server';
+import { homeTemplate } from './template';
 import api from './api';
+import { createStore } from 'redux';
+import reducer from '../../client/src/reducers';
+
+import productsRouter from './routes/product';
 
 const app = express();
 
@@ -12,18 +15,17 @@ const app = express();
 app.use('/public', express.static(path.resolve('./build/client')));
 app.use('/assets', express.static(path.resolve('src/client/src/assets')));
 app.use('/api', api);
-
-let initialState = {
-  isFetching: false,
-};
-
 // server rendered home page
 app.get('/', (req, res) => {
-  const { content } = ssr(initialState);
-  const response = template('Something', content);
+  const initialState = { query: req.query };
+  const store = createStore(reducer, initialState);
+  const response = homeTemplate(store, initialState);
   res.setHeader('Cache-Control', 'assets, max-age=604800');
   res.send(response);
 });
+
+app.use('/items/assets', express.static(path.resolve('src/client/src/assets')));
+app.use('/items', productsRouter);
 
 // start the server
 app.listen(process.env.PORT || 3000, () =>

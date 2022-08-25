@@ -6,7 +6,7 @@ import fetch from 'node-fetch';
  * @param {*} reqName
  * @returns {isLoading, isError, status, data}
  */
-const useFetch = (url, reqName) => {
+const useFetch = (url, reqName, search) => {
   const { isLoading, isError, status, data } = useQuery(reqName, () =>
     fetch(url)
       .then((res) => res.json())
