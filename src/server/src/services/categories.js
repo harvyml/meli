@@ -66,4 +66,15 @@ async function organizeCategories(results = []) {
   return _arrayOfNestedCategories;
 }
 
-export { organizeCategories };
+/**
+ *
+ * @param {*} id
+ * @returns categories_array
+ */
+async function fetchCategories(id) {
+  let _category = await request(`/categories/${id}`);
+  let categoriesList = _category.path_from_root.map((cat) => cat.name);
+  return categoriesList;
+}
+
+export { organizeCategories, fetchCategories };

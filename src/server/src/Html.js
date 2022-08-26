@@ -1,11 +1,12 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 
-const Html = ({ children, initialState, scripts }) => {
+const Html = ({ children, initialState, scripts, styles }) => {
   return (
     <html>
       <head>
         <meta charSet="UTF-8" />
         <title>Meli | {initialState.query.search}</title>
+        <link rel="stylesheet" href="/server/assets/app.css" />
       </head>
       <body>
         <div id="app" dangerouslySetInnerHTML={{ __html: children }} />
@@ -19,7 +20,9 @@ const Html = ({ children, initialState, scripts }) => {
         )}
 
         {scripts.map((item, index) => (
-          <script key={index} src={item} />
+          <Fragment>
+            <script key={index} src={item} />
+          </Fragment>
         ))}
       </body>
     </html>

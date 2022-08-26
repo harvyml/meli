@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import Product from '../components/Product';
 import '../assets/styles/products.scss';
 import Breadcrumb from '../components/Breadcrumb';
@@ -10,18 +10,26 @@ function Products({ query = {} }) {
     'products'
   );
 
-  if (status == 'success') {
+  function navigateToProduct(e) {
+    const id = e.currentTarget.getAttribute('id');
+    window.location.replace(`/items/${id}`);
+  }
+
+  if (status == 'success' && data.items) {
     return (
       <div className="container">
         {data && <Breadcrumb items={data.categories} />}
         <div className="products-container">
-          {data.items.map((product, idx) => {
+          {data?.items.map((product, idx) => {
             return (
               <Product
+                onClick={navigateToProduct}
+                id={product.id}
+                key={`product-${idx}`}
                 title={product.title}
                 img={product.picture}
                 price={product.price.amount}
-                city={'Buenos Aires'}
+                city={product.city}
               />
             );
           })}
@@ -32,6 +40,8 @@ function Products({ query = {} }) {
     return <h4>An Error has occured</h4>;
   } else if (isLoading) {
     return <h3>Loading...</h3>;
+  } else {
+    return <h3>Nothing to display</h3>;
   }
 }
 

@@ -14,6 +14,8 @@ const app = express();
 // Serving static files
 app.use('/public', express.static(path.resolve('./build/client')));
 app.use('/assets', express.static(path.resolve('src/client/src/assets')));
+app.use('/server/assets', express.static(path.resolve('./build/server/')));
+app.use('/items/assets', express.static(path.resolve('src/client/src/assets')));
 app.use('/api', api);
 // server rendered home page
 app.get('/', (req, res) => {
@@ -24,7 +26,6 @@ app.get('/', (req, res) => {
   res.send(response);
 });
 
-app.use('/items/assets', express.static(path.resolve('src/client/src/assets')));
 app.use('/items', productsRouter);
 
 // start the server
