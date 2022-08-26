@@ -1,6 +1,8 @@
 # Meli Test
 
-### Overview
+## how to Run
+
+## Technical Overview
 
 This is an SSR App created with React, Node, Express, Redux.
 
@@ -22,3 +24,8 @@ This app provides a really strong SEO approach by first executing a render on th
 ### Redux
 
 Redux is used to inject an initial state directly to the component `MainProduct.js` for boosting performance and saving the need to fetch the API but it can also be used to create reducers and manage the state of the App as it scales.
+
+## Git flow
+
+Used git flow methodology to have a clean and better integration implementing features any kind of task.
+Also used prettier, eslin, husky and lint staged to perform formatting operations and give hints.
