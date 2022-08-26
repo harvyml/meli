@@ -13,17 +13,23 @@ function ProductView({
   decimals,
   description,
 }) {
-  const [parsedData, setParsedData] = useState({ price: 0, decimals: 0 });
+  const [parsedData, setParsedData] = useState({
+    price: 0,
+    decimals: 0,
+    condition: 'new',
+  });
 
   function parse() {
     let _price = parseInt(price);
     // make the decimal not have the 0 at the left
     let _decimals = parseFloat(decimals).toFixed(2).toString().slice(1);
+    let _condition = condition === 'new' ? 'Nuevo' : 'Usado';
     setParsedData((current) => {
       return {
         ...current,
         price: _price,
         decimals: _decimals,
+        condition: _condition,
       };
     });
   }
@@ -44,7 +50,7 @@ function ProductView({
             <div className="product-view-info">
               <div className="product-view-general-info">
                 <span>
-                  {condition} - {sold_quantity}
+                  {parsedData.condition} - {sold_quantity} vendidos
                 </span>
                 <h1>{title}</h1>
               </div>
@@ -54,9 +60,11 @@ function ProductView({
                   <span className="decimals">{parsedData.decimals}</span>
                 </h3>
               </div>
-              <button className="product-view-info-button-buy button blue">
-                Comprar
-              </button>
+              <div className="product-view-info-button-buy-container">
+                <button className="product-view-info-button-buy button blue">
+                  Comprar
+                </button>
+              </div>
             </div>
           </div>
         </div>

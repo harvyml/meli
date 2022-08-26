@@ -13,7 +13,7 @@ const webpackClient = {
       // Extensions to watch.
       ext: 'js',
       // What to watch.
-      watch: path.resolve('./src/client/'),
+      watch: [path.resolve('./src/client/'), path.resolve('./src/server/')],
       delay: '1000',
       // Detailed log.
       verbose: true,

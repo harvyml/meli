@@ -5,7 +5,6 @@ function Product({
   onClick = () => true,
   id = 0,
   price = 1200.21,
-  decimals = 0.23,
   title = 'Iphone',
   description = 'Apple ipod touch 156GB 16RAM Negro Igual a nuevo, completo y unico',
   city = 'Capital Federal',

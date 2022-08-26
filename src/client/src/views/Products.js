@@ -15,7 +15,7 @@ function Products({ query = {} }) {
     window.location.replace(`/items/${id}`);
   }
 
-  if (status == 'success') {
+  if (status == 'success' && data.items) {
     return (
       <div className="container">
         {data && <Breadcrumb items={data.categories} />}
@@ -40,6 +40,8 @@ function Products({ query = {} }) {
     return <h4>An Error has occured</h4>;
   } else if (isLoading) {
     return <h3>Loading...</h3>;
+  } else {
+    return <h3>Nothing to display</h3>;
   }
 }
 
