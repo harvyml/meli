@@ -10,14 +10,16 @@ import ProductView from '../views/ProductView';
 
 const queryClient = new QueryClient();
 
-function MainProduct({ data = {} }) {
+function MainProduct(props) {
+  console.log(props);
+  const { data } = props;
   const { item } = data;
   return (
     <div className="App">
       <QueryClientProvider client={queryClient}>
         <Header />
         <ProductView
-          categories={item.categories}
+          categories={data.categories}
           picture={item.picture}
           condition={item.condition}
           sold_quantity={item.sold_quantity}

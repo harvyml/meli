@@ -2,6 +2,7 @@ import { Router } from 'express';
 import { AUTHOR } from '../../constants';
 import { organizeCategories, request } from '../services';
 import { formatSearch } from '../services/items';
+import { productRequest } from '../services/product';
 
 const api = Router();
 
@@ -29,25 +30,8 @@ api.get('/items', async (req, res) => {
 });
 
 api.get('/items/:id', async (req, res) => {
-  try {
-    const product = await request(`/items/${req.params.id}`);
-    const description = await request(`/items/${req.params.id}/description`);
-    const formattedProduct = formatSearch([product])[0];
-    res.json({
-      author: AUTHOR,
-      item: formattedProduct,
-      description: description,
-      ok: true,
-      err: null,
-    });
-  } catch (err) {
-    res.json({
-      author: AUTHOR,
-      item: null,
-      ok: false,
-      err: err,
-    });
-  }
+  let request = await productRequest(req.params.id);
+  res.json(request);
 });
 
 export default api;
