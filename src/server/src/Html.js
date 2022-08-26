@@ -6,7 +6,9 @@ const Html = ({ children, initialState, scripts, styles }) => {
       <head>
         <meta charSet="UTF-8" />
         <title>Meli | {initialState.query.search}</title>
-        <link rel="stylesheet" href="/server/assets/app.css" />
+        {styles.map((style, idx) => (
+          <link key={`link-${idx}`} rel="stylesheet" href={style} />
+        ))}
       </head>
       <body>
         <div id="app" dangerouslySetInnerHTML={{ __html: children }} />

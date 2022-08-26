@@ -9,7 +9,6 @@ async function productsRequest(limit, search) {
       `/sites/MLA/search?q=${search}&limit=${limit}`
     );
 
-    console.log('searchRequest: ', searchRequest);
     return {
       author: AUTHOR,
       items: formatSearch(searchRequest.results),
@@ -18,7 +17,6 @@ async function productsRequest(limit, search) {
       err: null,
     };
   } catch (err) {
-    console.log('err', err);
     return {
       author: AUTHOR,
       items: null,

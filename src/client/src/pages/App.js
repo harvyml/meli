@@ -1,21 +1,14 @@
-import React, { useState, useEffect } from 'react';
-import Header from '../components/Header';
+import React from 'react';
 import '../assets/styles/app.scss';
 import Products from '../views/Products';
-
-import { QueryClient, QueryClientProvider } from 'react-query';
 import { connect } from 'react-redux';
-
-const queryClient = new QueryClient();
+import Wrapper from '../components/Wrapper';
 
 function App({ query }) {
   return (
-    <div className="App">
-      <QueryClientProvider client={queryClient}>
-        <Header />
-        <Products query={query} />
-      </QueryClientProvider>
-    </div>
+    <Wrapper>
+      <Products query={query} />
+    </Wrapper>
   );
 }
 

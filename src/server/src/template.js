@@ -6,7 +6,7 @@ import App from '../../client/src/Pages/App';
 import MainProduct from '../../client/src/pages/MainProduct';
 import Html from './Html';
 
-function homeTemplate(store, initialState, fetchedData) {
+function homeTemplate(store, initialState) {
   const appMarkup = ReactDOMServer.renderToString(
     <Provider store={store}>
       <App />
@@ -15,6 +15,7 @@ function homeTemplate(store, initialState, fetchedData) {
 
   const html = ReactDOMServer.renderToString(
     <Html
+      styles={['/server/assets/app.css']}
       children={appMarkup}
       scripts={['public/app.js']}
       initialState={initialState}
@@ -23,19 +24,20 @@ function homeTemplate(store, initialState, fetchedData) {
 
   return html;
 }
+
 function productTemplate(store, initialState) {
-  const productMarkup = ReactDOMServer.renderToString(
+  const productMarkup = ReactDOMServer.renderToStaticMarkup(
     <Provider store={store}>
       <MainProduct />
     </Provider>
   );
 
-  const html = ReactDOMServer.renderToString(
+  const html = ReactDOMServer.renderToStaticMarkup(
     //using ../public/product.js because this route is one level deeper
     <Html
       children={productMarkup}
       scripts={['../public/product.js']}
-      styles={['./server/assets/app.css']}
+      styles={['/server/assets/app.css']}
       initialState={initialState}
     />
   );
