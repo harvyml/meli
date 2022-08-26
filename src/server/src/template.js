@@ -15,6 +15,7 @@ function homeTemplate(store, initialState, fetchedData) {
 
   const html = ReactDOMServer.renderToString(
     <Html
+      styles={['/server/assets/app.css']}
       children={appMarkup}
       scripts={['public/app.js']}
       initialState={initialState}
@@ -23,6 +24,7 @@ function homeTemplate(store, initialState, fetchedData) {
 
   return html;
 }
+
 function productTemplate(store, initialState) {
   const productMarkup = ReactDOMServer.renderToString(
     <Provider store={store}>
@@ -35,7 +37,7 @@ function productTemplate(store, initialState) {
     <Html
       children={productMarkup}
       scripts={['../public/product.js']}
-      styles={['./server/assets/app.css']}
+      styles={['/server/assets/app.css']}
       initialState={initialState}
     />
   );

@@ -14,10 +14,6 @@ function Search() {
     setSearch(e.target.value);
   }
 
-  useEffect(() => {
-    console.log(search);
-  }, [search]);
-
   return (
     <div className="search-container flex row">
       <form onSubmit={submit}>
