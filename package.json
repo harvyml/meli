@@ -5,7 +5,7 @@
   "main": "src/server/index.js",
   "scripts": {
     "serve-dev": "webpack --config webpack.dev.js",
-    "build": "webpack --config webpack.prod.js && webpack --config webpack.server.prod.js",
+    "build": "webpack --config webpack.prod.js && node build/server/index.js",
     "format": "prettier --write .",
     "prepare": "husky install"
   },

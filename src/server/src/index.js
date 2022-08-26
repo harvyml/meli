@@ -21,6 +21,7 @@ app.use('/api', api);
 app.get('/', (req, res) => {
   const initialState = { query: req.query };
   const store = createStore(reducer, initialState);
+  console.log(initialState);
   const response = homeTemplate(store, initialState);
   res.setHeader('Cache-Control', 'assets, max-age=604800');
   res.send(response);

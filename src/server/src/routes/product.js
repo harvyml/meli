@@ -10,7 +10,7 @@ router.get('/', async (req, res) => {
   const initialState = { query: req.query };
   const store = createStore(reducer, initialState);
   const _template = homeTemplate(store, initialState);
-  res.send(`<!doctype html>${_template}`);
+  res.send(_template);
 });
 
 router.get('/:id', async (req, res) => {
@@ -18,7 +18,7 @@ router.get('/:id', async (req, res) => {
   const initialState = { query: req.query, data: product };
   const store = createStore(reducer, initialState);
   const _template = productTemplate(store, initialState);
-  res.send(`<!doctype html>${_template}`);
+  res.send(_template);
 });
 
 export default router;
