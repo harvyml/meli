@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import Product from '../components/Product';
 import '../assets/styles/products.scss';
 import Breadcrumb from '../components/Breadcrumb';
@@ -29,7 +29,7 @@ function Products({ query = {} }) {
                 title={product.title}
                 img={product.picture}
                 price={product.price.amount}
-                city={'Buenos Aires'}
+                city={product.city}
               />
             );
           })}

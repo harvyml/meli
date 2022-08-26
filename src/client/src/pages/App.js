@@ -9,12 +9,10 @@ import { connect } from 'react-redux';
 const queryClient = new QueryClient();
 
 function App({ query }) {
-  const [search, setSearch] = useState('');
-
   return (
     <div className="App">
       <QueryClientProvider client={queryClient}>
-        <Header search={search} setSearch={(e) => setSearch(e.target.value)} />
+        <Header />
         <Products query={query} />
       </QueryClientProvider>
     </div>

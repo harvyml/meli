@@ -1,20 +1,29 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../assets/styles/search.scss';
 
-function Search({ search, setSearch }) {
+function Search() {
+  const [search, setSearch] = useState('');
+
   function submit(e) {
     e.preventDefault();
-    console.log('search', search);
     window.location.replace(`/items?search=${search}`);
-    // window.location.replace(`/items?search=${search}`);
-    return true;
+    return e;
   }
+
+  function onSearchChange(e) {
+    setSearch(e.target.value);
+  }
+
+  useEffect(() => {
+    console.log(search);
+  }, [search]);
+
   return (
     <div className="search-container flex row">
       <form onSubmit={submit}>
         <input
           value={search}
-          onChange={setSearch}
+          onChange={onSearchChange}
           placeholder="Search..."
           className="search"
         />

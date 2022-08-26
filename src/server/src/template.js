@@ -13,7 +13,7 @@ function homeTemplate(store, initialState, fetchedData) {
     </Provider>
   );
 
-  const html = ReactDOMServer.renderToStaticMarkup(
+  const html = ReactDOMServer.renderToString(
     <Html
       children={appMarkup}
       scripts={['public/app.js']}
@@ -30,11 +30,12 @@ function productTemplate(store, initialState) {
     </Provider>
   );
 
-  const html = ReactDOMServer.renderToStaticMarkup(
+  const html = ReactDOMServer.renderToString(
     //using ../public/product.js because this route is one level deeper
     <Html
       children={productMarkup}
       scripts={['../public/product.js']}
+      styles={['./server/assets/app.css']}
       initialState={initialState}
     />
   );

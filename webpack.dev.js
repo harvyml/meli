@@ -96,6 +96,7 @@ const webpackServer = {
   output: {
     path: path.resolve('build/server'),
     filename: 'index.js',
+    publicPath: path.resolve('/public/assets'),
   },
   module: {
     rules: [
@@ -104,13 +105,25 @@ const webpackServer = {
         use: 'babel-loader',
       },
       {
-        test: /\.s[ac]ss$/i,
+        test: /\.(css)$/,
         use: [
-          // Translates CSS into CommonJS
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+              filename: 'app.css',
+              publicPath: '/public/css',
+            },
+          },
           'css-loader',
-          // Compiles Sass to CSS
-          'sass-loader',
         ],
+      },
+      {
+        test: /\.scss$/,
+        type: 'asset/resource',
+        generator: {
+          filename: '[name].css',
+        },
+        use: ['sass-loader'],
       },
     ],
   },
