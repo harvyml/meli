@@ -2,6 +2,18 @@
 
 ## how to Run
 
+### Running with Docker
+
+1. **Add a .env file** you can use the .env.sample file
+2. run `docker-compose up -d` at the root path of the project
+
+### Running locally
+
+1. **Add a .env file** you can use the .env.sample file
+2. Clone the repository
+3. At the root of the project run `npm install`
+4. run `npm run start`
+
 ## Technical Overview
 
 This is an SSR App created with React, Node, Express, Redux.
