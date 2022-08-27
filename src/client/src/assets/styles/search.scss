@@ -1,0 +1,24 @@
+.search-container {
+  padding: 10px;
+  width: 100%;
+
+  form {
+    width: 100%;
+  }
+
+  .search {
+    padding: 10px 5px;
+    width: 100%;
+  }
+
+  .search-icon-container {
+    background-color: #eeeeee;
+  }
+  // not inside search-icon-container to leave the option to not use it
+  .search-icon {
+    width: 18px;
+    height: 18px;
+    justify-self: center;
+    padding: 0 10px;
+  }
+}

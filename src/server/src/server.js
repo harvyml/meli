@@ -1,10 +1,15 @@
 import React from 'react';
-import { renderToString } from 'react-dom/server';
-import App from '../../client/src/App';
+import { renderToStaticMarkup, renderToString } from 'react-dom/server';
+import { Provider } from 'react-redux';
+import App from '../../client/src/pages/App';
 
-module.exports = function render(initialState) {
-  let content = renderToString(<App />);
+export function index(store, initialState) {
+  let content = renderToString(
+    <Provider store={store}>
+      <App />
+    </Provider>
+  );
   return {
     content,
   };
-};
+}

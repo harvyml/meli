@@ -10,10 +10,7 @@ import { AUTHOR } from '../../constants';
 async function request(query) {
   let req = await fetch(`${process.env.API_MELI}${query}`);
   let res = await req.json();
-  return {
-    author: AUTHOR,
-    ...res,
-  };
+  return res;
 }
 
 export { request };
