@@ -4,8 +4,8 @@
   "description": "",
   "main": "src/server/index.js",
   "scripts": {
-    "serve-dev": "webpack --config webpack.dev.js",
-    "build": "webpack --config webpack.prod.js && node build/server/index.js",
+    "start:dev": "webpack --config webpack.dev.js",
+    "start": "webpack --config webpack.prod.js && node build/server/index.js",
     "format": "prettier --write .",
     "prepare": "husky install"
   },
