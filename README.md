@@ -17,6 +17,7 @@
 ## Technical Overview
 
 This is an SSR App created with React, Node, Express, Redux.
+Note: This same behaviour could have been approached using Next.js, however in order to follow the specific stack required for this test pure React.js was used.
 
 ### WHY SSR?
 
@@ -36,6 +37,10 @@ This app provides a really strong SEO approach by first executing a render on th
 ### Redux
 
 Redux is used to inject an initial state directly to the component `MainProduct.js` for boosting performance and saving the need to fetch the API but it can also be used to create reducers and manage the state of the App as it scales.
+
+### Styling
+
+Sass was used to create the styling for the application as required in the test specifications.
 
 ## Git flow
 
